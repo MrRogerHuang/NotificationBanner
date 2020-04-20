@@ -268,7 +268,7 @@ open class BaseNotificationBanner: UIView {
     }
 
     internal func spacerViewHeight() -> CGFloat {
-        return NotificationBannerUtilities.isNotchFeaturedIPhone()
+        return NotificationBannerUtilities.isNotchFeaturedIPhoneOrIPad()
             && UIApplication.shared.statusBarOrientation.isPortrait
             && (parentViewController?.navigationController?.isNavigationBarHidden ?? true) ? 40.0 : 10.0
     }
@@ -442,7 +442,7 @@ open class BaseNotificationBanner: UIView {
     internal var heightAdjustment: CGFloat {
         // iOS 13 does not allow covering the status bar on non-notch iPhones
         // The banner needs to be moved further down under the status bar in this case
-        guard #available(iOS 13.0, *), !NotificationBannerUtilities.isNotchFeaturedIPhone() else {
+        guard #available(iOS 13.0, *), !NotificationBannerUtilities.isNotchFeaturedIPhoneOrIPad() else {
             return 0
         }
 
@@ -584,7 +584,7 @@ open class BaseNotificationBanner: UIView {
      */
 
     internal func shouldAdjustForNotchFeaturedIphone() -> Bool {
-        return NotificationBannerUtilities.isNotchFeaturedIPhone()
+        return NotificationBannerUtilities.isNotchFeaturedIPhoneOrIPad()
             && UIApplication.shared.statusBarOrientation.isPortrait
             && (self.parentViewController?.navigationController?.isNavigationBarHidden ?? true)
     }

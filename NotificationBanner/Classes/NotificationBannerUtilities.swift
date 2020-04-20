@@ -20,9 +20,9 @@ import UIKit
 
 class NotificationBannerUtilities: NSObject {
 
-    class func isNotchFeaturedIPhone() -> Bool {
+    class func isNotchFeaturedIPhoneOrIPad() -> Bool {
         if #available(iOS 11, *) {
-            if UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0 > CGFloat(0) {
+            if UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0 > CGFloat(0) || UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
                 return true
             } else {
                 return false
